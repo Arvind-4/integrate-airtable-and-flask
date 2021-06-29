@@ -1,0 +1,45 @@
+{% extends 'main.html' %}
+
+{% block title %} Success {% endblock %}
+
+{% block content %}
+    <div class="body-wrap boxed">    
+        {% include 'header.html' %}
+        <section class="hero text-center text-light">
+            <div class="hero-bg"></div>
+            <div class="hero-particles-container">
+                <canvas id="hero-particles"></canvas>
+            </div>
+            <div class="container-sm">
+                <div class="hero-inner">
+                    <div class="hero-copy">
+                        <font color='#FFFF00'>
+                            <h1 class="hero-title mt-0"><font color='#FFFF00'>Thanks!</font></h1>
+                            <p class="hero-paragraph">Futher Details will be Mailed. </p>
+                            <font color='#FFFFFF'><p class="hero-paragraph"><a href='/'>Home</a></p></font>
+                        </font>                           
+                    </div>
+                    <div class="mockup-container">
+                        <div class="mockup-bg">
+                            <img src="{{ url_for('static', filename='dist/images/iphone-hero-bg.svg')}}" alt="iPhone illustration">
+                        </div>
+                        <img class="device-mockup" src="{{ url_for('static', filename='dist/images/iphone-hero.png')}}" alt="iPhone Hero">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer" id='footer'>
+            <div class="footer-particles-container">
+                <canvas id="footer-particles"></canvas>
+            </div>
+            <div class="site-footer-top">
+            </div>
+            <div class="site-footer-bottom">
+                <div class="container">
+                    {% include 'footer.html' %}
+                </div>
+            </div>
+        </footer>
+    </div>
+
+{% endblock %}
