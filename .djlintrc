@@ -1,0 +1,13 @@
+{
+    "use_gitignore": "True"
+    "profile": "jinja",
+    "indent": "2",
+    "format_js": true
+    "js": {
+        "indent_size": 2
+    },
+    "format_css": true
+    "css": {
+        "indent_size": 2
+    }
+}
