@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "integrate-airtable-and-flask"
+version = "0.1.0"
+description = ""
+authors = ["Arvind-4 <lordarvindthegamer@gmail.com>"]
+readme = "README.md"
+packages = [{include = "integrate_airtable_and_flask"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+Flask = "^2.2.2"
+requests = "^2.28.1"
+python-decouple = "^3.6"
+
+
+[tool.poetry.group.dev.dependencies]
+gunicorn = "^20.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
