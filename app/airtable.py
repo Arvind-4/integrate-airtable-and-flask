@@ -1,6 +1,5 @@
-import os
-import requests
 from dataclasses import dataclass
+import requests
 
 from .constants import (
     BASE_URL,
@@ -14,7 +13,7 @@ class AirTable:
     apiKey: str
     tableName: str
 
-    def create_records(self, email=None):
+    def createRecords(self, email=None):
         if email is None:
             return 404
         headers = {
@@ -31,5 +30,5 @@ class AirTable:
             ]
         }
         endpoint = f"{BASE_URL}/{VERSION}/{self.baseId}/{self.tableName}"
-        r = requests.post(endpoint, json=data, headers=headers)
+        r = requests.post(endpoint, json=data, headers=headers, timeout=5)
         return r.status_code

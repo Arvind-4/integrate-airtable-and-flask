@@ -1,6 +1,5 @@
 import pathlib
-from flask import Flask, render_template, request, redirect, url_for, request
-from decouple import config
+from flask import Flask, render_template, request, redirect, url_for
 
 from .airtable import AirTable
 from . import constants
@@ -20,8 +19,9 @@ app.secret_key = constants.SECRET_KEY
 
 
 @app.route("/", methods=["GET", "POST"])
-def home_view():
+def homeView():
     sent = None
+    print("request.method", request.method)
     if request.method == "POST":
         email = request.form.get("email")
         airtableClient = AirTable(
@@ -29,21 +29,21 @@ def home_view():
             apiKey=constants.AIRTABLE_API_KEY,
             tableName=constants.AIRTABLE_TABLE_NAME,
         )
-        status = airtableClient.create_records(email=email)
+        status = airtableClient.createRecords(email=email)
         if status in range(200, 250):
             sent = True
-            return redirect(url_for("success_view"), code=302)
-        else:
-            sent = False
-            return redirect(url_for("error_view"), code=302)
+            return redirect(url_for("successView"), code=302)
+        sent = False
+        return redirect(url_for("errorView"), code=302)
     return render_template("pages/index.html", sent=sent)
 
 
 @app.route("/success")
-def success_view():
+def successView():
     return render_template("pages/success.html")
 
 
 @app.route("/<error>")
-def error_view(error):
+def errorView(*args):
+
     return render_template("pages/404.html")
